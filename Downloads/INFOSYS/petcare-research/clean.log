@@ -1,0 +1,112 @@
+﻿
+> petcare-research@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.3.8 (Turbopack)
+- Environments: .env
+npm : ΓÜá Warning: 
+Next.js ignored 
+package-lock.json in 
+C:\Users\Sanjitha 
+because it would 
+include your home 
+directory 
+(C:\Users\Sanjitha).
+At line:1 char:1
++ npm run build > 
+build.log 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (ΓÜá Warning:    
+ Ne...sers\Sanjitha    
+).:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+ To use this 
+directory, set 
+`turbopack.root` in 
+your Next.js config.
+
+Γ£ô Running next.config.mjs took 17ms
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 1655ms
+  Running TypeScript ...
+.next/dev/types/validator.ts(117,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/analyze/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/analyze">'.
+  Types of property 'POST' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ message: string; report: { id: string; createdAt: Date; ... 9 more ...; experimentId: string; }; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/dev/types/validator.ts(126,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/interviews/[personaId]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/interviews/[personaId]">'.
+  Types of property 'POST' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; personaId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ role: string; content: string; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; personaId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; personaId: string; }>; }' is not assignable to type '{ params: { experimentId: string; personaId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Type 'Promise<{ experimentId: string; personaId: string; }>' is missing the following properties from type '{ experimentId: string; personaId: string; }': experimentId, personaId
+.next/dev/types/validator.ts(135,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/personas/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/personas">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<({ memories: { id: string; createdAt: Date; personaId: string; content: string; }[]; } & { ...; })[]>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/dev/types/validator.ts(144,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/report/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/report">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ experiment: { productName: string; targetAudience: string; researchObjectives: string; }; report: { ...; }; personas: { ...; }[]; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/dev/types/validator.ts(153,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/surveys/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/surveys">'.
+  Types of property 'POST' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ question: { id: string; createdAt: Date; experimentId: string; question: string; }; responses: ({ ...; } | null)[]; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/types/validator.ts(117,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/analyze/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/analyze">'.
+  Types of property 'POST' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ message: string; report: { id: string; createdAt: Date; ... 9 more ...; experimentId: string; }; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/types/validator.ts(126,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/interviews/[personaId]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/interviews/[personaId]">'.
+  Types of property 'POST' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; personaId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ role: string; content: string; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; personaId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; personaId: string; }>; }' is not assignable to type '{ params: { experimentId: string; personaId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Type 'Promise<{ experimentId: string; personaId: string; }>' is missing the following properties from type '{ experimentId: string; personaId: string; }': experimentId, personaId
+.next/types/validator.ts(135,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/personas/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/personas">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<({ memories: { id: string; createdAt: Date; personaId: string; content: string; }[]; } & { ...; })[]>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/types/validator.ts(144,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/report/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/report">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ experiment: { productName: string; targetAudience: string; researchObjectives: string; }; report: { ...; }; personas: { ...; }[]; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+.next/types/validator.ts(153,31): error TS2344: Type 'typeof import("C:/Users/Sanjitha/Downloads/INFOSYS/petcare-research/src/app/api/experiments/[experimentId]/surveys/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/experiments/[experimentId]/surveys">'.
+  Types of property 'POST' are incompatible.
+    Type '(request: Request, { params }: { params: { experimentId: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ question: { id: string; createdAt: Date; experimentId: string; question: string; }; responses: ({ ...; } | null)[]; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ experimentId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ experimentId: string; }>; }' is not assignable to type '{ params: { experimentId: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'experimentId' is missing in type 'Promise<{ experimentId: string; }>' but required in type '{ experimentId: string; }'.
+prisma.config.ts(1,36): error TS2307: Cannot find module 'prisma/config' or its corresponding type declarations.
+Failed to type check.
+

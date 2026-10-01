@@ -1,0 +1,178 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String       @id @default(cuid())
+  name          String?
+  email         String?      @unique
+  password      String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  pets          Pet[]
+  experiments   Experiment[]
+}
+
+model Pet {
+  id          String         @id @default(cuid())
+  name        String
+  species     String   
+  breed       String?
+  dateOfBirth DateTime?
+  weight      Float?
+  userId      String
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  healthLogs  HealthRecord[]
+  activities  ActivityLog[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model HealthRecord {
+  id        String   @id @default(cuid())
+  petId     String
+  pet       Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)
+  type      String   
+  notes     String?
+  date      DateTime @default(now())
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  petId     String
+  pet       Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)
+  activity  String   
+  duration  Int      
+  date      DateTime @default(now())
+}
+
+model AdoptionListing {
+  id          String   @id @default(cuid())
+  petName     String
+  species     String
+  breed       String?
+  age         Int?     
+  description String
+  status      String   @default("AVAILABLE") 
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Experiment {
+  id                 String           @id @default(cuid())
+  userId             String
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productName        String
+  productDescription String
+  targetAudience     String
+  researchObjectives String
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  personas           Persona[]
+  surveyQuestions    SurveyQuestion[]
+  interviews         Interview[]
+  report             ExperimentReport?
+}
+
+model Persona {
+  id                 String           @id @default(cuid())
+  experimentId       String
+  experiment         Experiment       @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  name               String
+  age                Int
+  gender             String
+  occupation         String
+  location           String
+  personalityTraits  String[]
+  behavioralPatterns String[]
+  goals              String[]
+  painPoints         String[]
+  motivations        String[]
+  preferences        String[]
+  concerns           String[]
+  communicationStyle String
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  memories           PersonaMemory[]
+  surveyResponses    SurveyResponse[]
+  interviews         Interview[]
+  intent             PersonaIntent?
+}
+
+model PersonaMemory {
+  id          String   @id @default(cuid())
+  personaId   String
+  persona     Persona  @relation(fields: [personaId], references: [id], onDelete: Cascade)
+  content     String
+  createdAt   DateTime @default(now())
+}
+
+model SurveyQuestion {
+  id           String           @id @default(cuid())
+  experimentId String
+  experiment   Experiment       @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  question     String
+  createdAt    DateTime         @default(now())
+  responses    SurveyResponse[]
+}
+
+model SurveyResponse {
+  id         String         @id @default(cuid())
+  questionId String
+  question   SurveyQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  personaId  String
+  persona    Persona        @relation(fields: [personaId], references: [id], onDelete: Cascade)
+  response   String
+  createdAt  DateTime       @default(now())
+}
+
+model Interview {
+  id           String             @id @default(cuid())
+  experimentId String
+  experiment   Experiment         @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  personaId    String
+  persona      Persona            @relation(fields: [personaId], references: [id], onDelete: Cascade)
+  createdAt    DateTime           @default(now())
+  messages     InterviewMessage[]
+}
+
+model InterviewMessage {
+  id          String    @id @default(cuid())
+  interviewId String
+  interview   Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  role        String    // "user" or "persona"
+  content     String
+  createdAt   DateTime  @default(now())
+}
+
+model PersonaIntent {
+  id          String   @id @default(cuid())
+  personaId   String   @unique
+  persona     Persona  @relation(fields: [personaId], references: [id], onDelete: Cascade)
+  decision    String   // YES, MAYBE, NO
+  score       Int      // 1-5
+  reasoning   String
+  keyFactors  String[]
+  createdAt   DateTime @default(now())
+}
+
+model ExperimentReport {
+  id                   String     @id @default(cuid())
+  experimentId         String     @unique
+  experiment           Experiment @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  summary              String
+  themes               Json       // Array of objects
+  sentiment            Json       // Object: positive, neutral, negative, mixed
+  agreementPatterns    String[]
+  disagreementPatterns String[]
+  behavioralTrends     String[]
+  painPoints           String[]
+  featurePreferences   String[]
+  concerns             String[]
+  createdAt            DateTime   @default(now())
+}
